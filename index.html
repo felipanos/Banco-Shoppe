@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Inicio do container -->
+    <div class="container">
+
+        <!-- Tela inicial -->
+    <div id="telaInicial">
+
+        <div class="titulo">
+            <h1>Controle Shopee</h1>
+        </div>
+
+        <div class="chefes">
+
+            <h2>Selecione seu chefe</h2>
+
+            <div class="botoes">
+                <button id="opcao1">Oziel</button>
+                <button id="opcao2">Xaoxi</button>
+                <button id="opcao3">Jack</button>
+                <button id="opcao4">Alfredo</button>
+            </div>
+
+        </div>
+
+    </div>
+
+<!-- Tela estoque invisivel -->
+   <div id="telaEstoque">
+
+    <!-- abre o topo -->
+    <div class="topo">
+
+        <button id="voltar">
+            ← Voltar
+        </button>
+
+        <h2 id="nomeChefe">
+            Chefe:
+        </h2>
+
+    </div>
+<!-- chega o topo -->
+
+    <div class="pesquisa">
+    <input
+        type="text"
+        id="pesquisa"
+        placeholder="Pesquisar produto ou código">
+</div>
+
+<div id="sugestoes"></div>
+
+    <!-- BOTÃO DE ADICIONAR -->
+
+    <div class="acoes">
+
+        <button id="adicionarProduto">
+            + Adicionar Produto
+        </button>
+
+    </div>
+
+    <!-- FORMULÁRIO -->
+
+    <div id="formularioProduto">
+
+        <input
+            type="text"
+            id="nomeProduto"
+            placeholder="Nome do produto">
+
+        <input
+            type="text"
+            id="codigoProduto"
+            placeholder="Código">
+
+        <input
+            type="number"
+            id="quantidadeProduto"
+            placeholder="Quantidade">
+
+            <div class="botoesFormulario">
+        <button id="salvarProduto">
+            Salvar
+        </button>
+
+        <button id="cancelarProduto">
+        Cancelar
+        </button>
+    </div>
+
+    </div>
+    <!-- LISTA DE PRODUTOS -->
+
+    <div id="listaProdutos">
+
+        <p id="semProdutos">
+            Nenhum produto cadastrado.
+        </p>
+
+    </div>
+
+</div>
+</div>
+<!-- Final do container -->
+    <script src="script.js"></script>
+
+</body>
+</html>
