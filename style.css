@@ -124,6 +124,12 @@ h1, h2, h3, p {
     margin: 0;
 }
 
+@media (max-width: 480px) {
+    #nomeChefe {
+        padding: 0 90px;
+    }
+}
+
 #voltar {
     position: absolute;
     left: 0;
