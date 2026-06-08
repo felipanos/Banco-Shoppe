@@ -308,6 +308,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .produto {
+    position: relative;
     background: rgba(255, 255, 255, 0.15);
     border-radius: 12px;
     padding: 12px;
@@ -318,6 +319,25 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .produto h3 {
     margin: 0 0 8px;
+    padding-right: 44px;
+}
+
+.btn-excluir {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1;
+    background: #ffe8e8;
+    color: #8b1a1a;
+}
+
+.btn-excluir:hover {
+    background: #c0392b;
+    color: #fff;
 }
 
 .produto p {
@@ -442,6 +462,56 @@ input[type="number"]::-webkit-outer-spin-button {
 .fechar-relatorio {
     width: 100%;
     margin-top: 4px;
+}
+
+
+/* =============================================================================
+   7b. CONFIRMACAO — Popup "tem certeza?"
+   ============================================================================= */
+
+.overlay-confirmacao {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1100;
+}
+
+.painel-confirmacao {
+    background: #fff;
+    color: #222;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    animation: aparecer 0.25s ease;
+}
+
+.mensagem-confirmacao {
+    color: #222;
+    margin: 0 0 20px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.botoes-confirmacao {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-confirmar-acao {
+    background: #c0392b;
+    color: #fff;
+}
+
+.btn-confirmar-acao:hover {
+    background: #a93226;
+    color: #fff;
 }
 
 

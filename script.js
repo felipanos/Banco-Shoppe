@@ -346,11 +346,11 @@ function criarCardProduto(produto, indice) {
     card.dataset.indice = String(indice);
 
     card.innerHTML =
+        '<button type="button" class="btn-excluir" title="Excluir produto" aria-label="Excluir produto">🗑️</button>' +
         '<h3 class="nome-produto">' + escaparHtml(produto.nome) + '</h3>' +
         '<p>Códigos: <span class="codigos-produto">' + escaparHtml(produto.codigos.join(" | ")) + '</span></p>' +
         '<p>Quantidade: <span class="qtd-produto">' + escaparHtml(String(produto.quantidade)) + '</span></p>' +
         '<div class="acoes-produto">' +
-        '<button type="button" class="btn-excluir">🗑️ Excluir Produto</button>' +
             '<button type="button" class="btn-editar">✏️ Editar</button>' +
             '<button type="button" class="btn-retirar">📦 Retirar Caixa</button>' +
         '</div>' +
@@ -433,7 +433,26 @@ function criarCardProduto(produto, indice) {
         painelRetirada.hidden = true;
     });
 
+    // Excluir produto (com confirmação)
+    card.querySelector(".btn-excluir").addEventListener("click", function () {
+        abrirConfirmacao(
+            'Tem certeza que deseja excluir "' + produto.nome +
+            '"? Esta ação não pode ser desfeita.',
+            function () { excluirProduto(produto); }
+        );
+    });
+
     return card;
+}
+
+function excluirProduto(produto) {
+    const produtos = getProdutosAtuais();
+    const indice = produtos.indexOf(produto);
+    if (indice === -1) return;
+
+    produtos.splice(indice, 1);
+    persistirEstoques();
+    renderizarLista();
 }
 
 
@@ -693,6 +712,52 @@ function abrirOverlay(titulo, secoes) {
     });
 
     painel.appendChild(btnFechar);
+    overlay.appendChild(painel);
+    document.body.appendChild(overlay);
+}
+
+function abrirConfirmacao(mensagem, aoConfirmar) {
+    document.getElementById("overlayConfirmacao")?.remove();
+
+    const overlay = document.createElement("div");
+    overlay.id = "overlayConfirmacao";
+    overlay.className = "overlay-confirmacao";
+
+    const painel = document.createElement("div");
+    painel.className = "painel-confirmacao";
+
+    const texto = document.createElement("p");
+    texto.className = "mensagem-confirmacao";
+    texto.textContent = mensagem;
+
+    const botoes = document.createElement("div");
+    botoes.className = "botoes-confirmacao";
+
+    const btnConfirmar = document.createElement("button");
+    btnConfirmar.type = "button";
+    btnConfirmar.className = "btn-confirmar-acao";
+    btnConfirmar.textContent = "Sim, excluir";
+
+    const btnCancelar = document.createElement("button");
+    btnCancelar.type = "button";
+    btnCancelar.className = "btn-cancelar-acao";
+    btnCancelar.textContent = "Cancelar";
+
+    function fechar() { overlay.remove(); }
+
+    btnConfirmar.addEventListener("click", function () {
+        fechar();
+        aoConfirmar();
+    });
+    btnCancelar.addEventListener("click", fechar);
+    overlay.addEventListener("click", function (e) {
+        if (e.target === overlay) fechar();
+    });
+
+    botoes.appendChild(btnConfirmar);
+    botoes.appendChild(btnCancelar);
+    painel.appendChild(texto);
+    painel.appendChild(botoes);
     overlay.appendChild(painel);
     document.body.appendChild(overlay);
 }
