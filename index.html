@@ -3,114 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle Shopee</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Inicio do container -->
     <div class="container">
 
-        <!-- Tela inicial -->
-    <div id="telaInicial">
+        <!-- ================================================================
+             TELA 1 — SELEÇÃO DO CHEFE
+             ================================================================ -->
+        <section id="telaInicial" class="tela">
 
-        <div class="titulo">
-            <h1>Controle Shopee</h1>
-        </div>
+            <header class="titulo">
+                <h1>Controle Shopee</h1>
+                <p class="subtitulo">Controle de estoque por chefe</p>
+            </header>
 
-        <div class="chefes">
-
-            <h2>Selecione seu chefe</h2>
-
-            <div class="botoes">
-                <button id="opcao1">Oziel</button>
-                <button id="opcao2">Xaoxi</button>
-                <button id="opcao3">Jack</button>
-                <button id="opcao4">Alfredo</button>
+            <div class="chefes">
+                <h2>Selecione seu chefe</h2>
+                <div class="botoes">
+                    <button id="opcao1" type="button">Oziel</button>
+                    <button id="opcao2" type="button">Xaoxi</button>
+                    <button id="opcao3" type="button">Jack</button>
+                    <button id="opcao4" type="button">Alfredo</button>
+                </div>
             </div>
 
-        </div>
+        </section>
+
+        <!-- ================================================================
+             TELA 2 — ESTOQUE DO CHEFE
+             ================================================================ -->
+        <section id="telaEstoque" class="tela">
+
+            <!-- Cabeçalho: voltar | chefe | relatório -->
+            <header class="topo">
+                <button id="voltar" type="button">← Voltar</button>
+                <h2 id="nomeChefe">Chefe:</h2>
+                <button id="relatorio" type="button">Relatório</button>
+            </header>
+
+            <!-- Pesquisa de produtos -->
+            <div class="pesquisa">
+                <input
+                    type="text"
+                    id="pesquisa"
+                    placeholder="Pesquisar produto ou código">
+            </div>
+            <div id="sugestoes"></div>
+
+            <!-- Ações principais -->
+            <div class="acoes">
+                <button id="adicionarProduto" type="button">+ Adicionar Produto</button>
+                <button id="historicoRetiradas" type="button">Histórico de Retiradas</button>
+            </div>
+
+            <!-- Formulário de novo produto -->
+            <div id="formularioProduto">
+                <p class="titulo-secao">Novo produto</p>
+
+                <input type="text" id="nomeProduto" placeholder="Nome do produto">
+                <input type="text" id="codigoProduto" placeholder="Código">
+                <input type="number" id="quantidadeProduto" placeholder="Quantidade" min="0" step="1">
+
+                <div class="botoesFormulario">
+                    <button id="salvarProduto" type="button">Salvar</button>
+                    <button id="cancelarProduto" type="button">Cancelar</button>
+                </div>
+            </div>
+
+            <!-- Lista de produtos (cards gerados pelo script.js) -->
+            <div id="listaProdutos">
+                <p id="semProdutos">Nenhum produto cadastrado.</p>
+            </div>
+
+        </section>
 
     </div>
 
-<!-- Tela estoque invisivel -->
-   <div id="telaEstoque">
-
-    <!-- abre o topo -->
-    <div class="topo">
-
-        <button id="voltar">
-            ← Voltar
-        </button>
-
-        <h2 id="nomeChefe">
-            Chefe:
-        </h2>
-
-    </div>
-<!-- chega o topo -->
-
-    <div class="pesquisa">
-    <input
-        type="text"
-        id="pesquisa"
-        placeholder="Pesquisar produto ou código">
-</div>
-
-<div id="sugestoes"></div>
-
-    <!-- BOTÃO DE ADICIONAR -->
-
-    <div class="acoes">
-
-        <button id="adicionarProduto">
-            + Adicionar Produto
-        </button>
-
-    </div>
-
-    <!-- FORMULÁRIO -->
-
-    <div id="formularioProduto">
-
-        <input
-            type="text"
-            id="nomeProduto"
-            placeholder="Nome do produto">
-
-        <input
-            type="text"
-            id="codigoProduto"
-            placeholder="Código">
-
-        <input
-            type="number"
-            id="quantidadeProduto"
-            placeholder="Quantidade">
-
-            <div class="botoesFormulario">
-        <button id="salvarProduto">
-            Salvar
-        </button>
-
-        <button id="cancelarProduto">
-        Cancelar
-        </button>
-    </div>
-
-    </div>
-    <!-- LISTA DE PRODUTOS -->
-
-    <div id="listaProdutos">
-
-        <p id="semProdutos">
-            Nenhum produto cadastrado.
-        </p>
-
-    </div>
-
-</div>
-</div>
-<!-- Final do container -->
     <script src="script.js"></script>
 
 </body>
