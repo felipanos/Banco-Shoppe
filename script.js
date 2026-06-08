@@ -340,17 +340,30 @@ function salvarEdicao(card, produto) {
     return true;
 }
 
+function excluirProduto(card, produto) {
+    if (!confirm('Tem certeza que deseja excluir o produto "' + produto.nome + '"?')) {
+        return;
+    }
+
+    const produtos = getProdutosAtuais();
+    const indice = Number(card.dataset.indice);
+    produtos.splice(indice, 1);
+    
+    persistirEstoques();
+    renderizarLista();
+}
+
 function criarCardProduto(produto, indice) {
     const card = document.createElement("article");
     card.className = "produto";
     card.dataset.indice = String(indice);
 
     card.innerHTML =
+        '<button type="button" class="btn-excluir">🗑️</button>' +
         '<h3 class="nome-produto">' + escaparHtml(produto.nome) + '</h3>' +
         '<p>Códigos: <span class="codigos-produto">' + escaparHtml(produto.codigos.join(" | ")) + '</span></p>' +
         '<p>Quantidade: <span class="qtd-produto">' + escaparHtml(String(produto.quantidade)) + '</span></p>' +
         '<div class="acoes-produto">' +
-        '<button type="button" class="btn-excluir">🗑️ Excluir Produto</button>' +
             '<button type="button" class="btn-editar">✏️ Editar</button>' +
             '<button type="button" class="btn-retirar">📦 Retirar Caixa</button>' +
         '</div>' +
@@ -383,6 +396,11 @@ function criarCardProduto(produto, indice) {
 
     renderizarListaCodigos(listaCodigos, produto, card);
     preencherSelectCodigos(selectCodigo, produto.codigos);
+
+    // Excluir produto
+    card.querySelector(".btn-excluir").addEventListener("click", function () {
+        excluirProduto(card, produto);
+    });
 
     // Abrir/fechar painel de edição
     card.querySelector(".btn-editar").addEventListener("click", function () {

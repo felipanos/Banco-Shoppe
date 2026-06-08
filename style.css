@@ -101,6 +101,12 @@ h1, h2, h3, p {
     justify-items: center;
 }
 
+@media (max-width: 480px) {
+    .botoes {
+        gap: 15px;
+    }
+}
+
 
 /* =============================================================================
    4. TELA ESTOQUE — Cabeçalho, pesquisa, ações
@@ -130,6 +136,17 @@ h1, h2, h3, p {
     right: 0;
     width: 100px;
     height: 40px;
+}
+
+@media (max-width: 480px) {
+    #voltar {
+        width: 80px;
+        font-size: 12px;
+    }
+    #relatorio {
+        width: 80px;
+        font-size: 12px;
+    }
 }
 
 .pesquisa {
@@ -314,10 +331,30 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-top: 12px;
     text-align: left;
     animation: aparecerProduto 0.25s ease;
+    position: relative;
+}
+
+.btn-excluir {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    font-size: 16px;
+    background: rgba(255, 232, 232, 0.9);
+    color: #8b1a1a;
+    border-radius: 6px;
+}
+
+.btn-excluir:hover {
+    background: #c0392b;
+    color: #fff;
 }
 
 .produto h3 {
     margin: 0 0 8px;
+    padding-right: 45px;
 }
 
 .produto p {
